@@ -2,3 +2,106 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.center-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.spacebetween-center {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gap-1em {
+    gap: 1em;
+}
+
+.gap-05em {
+    gap: .5em;
+}
+
+.no-margin {
+    margin: 0
+}
+
+.no-top-margin {
+    margin-top: 0;
+}
+
+.start-start {
+    align-items: start;
+}
+
+.start-center {
+    align-items: center;
+}
+
+.link, .pointer {
+    cursor: pointer;
+}
+
+.link:hover, .activeLink {
+    color: crimson;
+    text-decoration: underline;
+}
+
+.end-center {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.center-start {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.padding-20px {
+    padding: 20px;
+}
+
+.red-color {
+    color: red;
+}
+
+.auth-card {
+    min-width: 350px;
+    padding: 20px;
+}
+
+.link {
+    font-weight: 500;
+    text-decoration: none;
+}
