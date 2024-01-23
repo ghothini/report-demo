@@ -1,1 +1,32 @@
-<p>home works!</p>
+<div class="flex full-height gap-1em padding-20px">
+    <div class="width-250px">
+        <mat-card class="full-height spacebetween-center padding-20px">
+            <h2>Late Report</h2>
+            <div>
+                <p *ngFor="let menu of menuItems, let i = index" [routerLink]="menu.route" [class.activeLink]="activeLink === i" class="link">
+                    {{menu.name}}</p>
+            </div>
+            <button mat-raised-button color="primary">Log Out</button>
+        </mat-card>
+    </div>
+
+    <div class="flex column full-width gap-1em">
+        <div class="toolbar">
+            <mat-card class="full-height full-width">
+                <div class="flex  spacebetween-center">
+                    <p>{{class.className}}</p>
+                    <p *ngIf="user.role === 'facilitator'"><b>Facilitator:</b>{{user.name}}</p>
+                    <p *ngIf="user.role === 'candidate'"><b>Candidate:</b>{{user.name}}</p>
+
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="flex flex-1">
+            <mat-card class="full-width">
+                <router-outlet></router-outlet>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
