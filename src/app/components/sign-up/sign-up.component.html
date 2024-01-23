@@ -1,1 +1,16 @@
-<p>sign-up works!</p>
+<div class="flex column center-center full-height">
+    <mat-card class="half-width">
+        <h2 class="text-center">Register</h2>
+        <form class="full-width">
+            <!-- First Name -->
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input type="text" matInput placeholder="Ex. pat@example.com" name="firstName" #firstName="ngModel"
+              [(ngModel)]="registerFormData.firstName" required>
+              <mat-error *ngIf="firstName.invalid && firstName.errors && firstName.errors['required']">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </form>
+    </mat-card>
+</div>
