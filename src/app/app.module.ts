@@ -14,6 +14,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ViewCandidatesComponent } from './components/view-candidates/view-candidates.component';
 import { ViewLateReportCandidateComponent } from './components/view-late-report-candidate/view-late-report-candidate.component';
 import { ViewLateReportComponent } from './components/view-late-report/view-late-report.component';
+import { AddClassComponent } from './popUps/add-class/add-class.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ViewLateReportComponent } from './components/view-late-report/view-late
     SignUpComponent,
     ViewCandidatesComponent,
     ViewLateReportCandidateComponent,
-    ViewLateReportComponent
+    ViewLateReportComponent,
+    AddClassComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,10 @@ export class HomeComponent {
  menuItems: any = []
  activeLink: number = 0
 
- constructor(private router: Router) {
+ constructor(private router: Router, private sharedService: SharedService) {
 
-  this.user = {name: 'Simphiwe Nene', role: 'facilitator'}
-  this.class = {className: 'Maths'}
+  this.user = this.sharedService.get('user', 'session')
+  this.class = this.sharedService.get('class', 'session')
 
 
   if(this.user === 'candidate') {
