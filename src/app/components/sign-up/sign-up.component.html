@@ -1,57 +1,82 @@
-<div class="flex column center-center full-height">
+<div class="flex column center-center full-height padding-4em">
     <mat-card class="half-width">
         <h2 class="text-center">Register</h2>
         <form #registerForm="ngForm" class="full-width">
             <!-- First Name -->
             <mat-form-field class="full-width">
-              <mat-label>First Name</mat-label>
-              <input type="text" matInput placeholder="Ex. pat@example.com" name="firstName" #firstName="ngModel"
-              [(ngModel)]="registerFormData.firstName" required>
-              <mat-error *ngIf="firstName.invalid && firstName.errors && firstName.errors['required']">
-                First Name is <strong>required</strong>
-              </mat-error>
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput placeholder="Ex. pat@example.com" name="firstName" #firstName="ngModel"
+                    [(ngModel)]="registerFormData.firstName" required>
+                <mat-error *ngIf="firstName.invalid && firstName.errors && firstName.errors['required']">
+                    First Name is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
             <!-- Last Name -->
             <mat-form-field class="full-width">
-              <mat-label>Last Name</mat-label>
-              <input type="text" matInput placeholder="Ex. pat@example.com" name="lastName" #lastName="ngModel"
-              [(ngModel)]="registerFormData.lastName" required>
-              <mat-error *ngIf="lastName.invalid && lastName.errors && lastName.errors['required']">
-                Last Name is <strong>required</strong>
-              </mat-error>
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput placeholder="Ex. pat@example.com" name="lastName" #lastName="ngModel"
+                    [(ngModel)]="registerFormData.lastName" required>
+                <mat-error *ngIf="lastName.invalid && lastName.errors && lastName.errors['required']">
+                    Last Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <!-- Role -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Select Role</mat-label>
+                <mat-select name="role" #role="ngModel" [(ngModel)]="registerFormData.role" required>
+                    <mat-option *ngFor="let role of roles" [value]="role">
+                        {{role | titlecase}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="role.invalid && role.errors && role.errors['required']">
+                    Selection is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <!-- Class -->
+            <mat-form-field *ngIf="registerFormData.role === 'candidate'" appearance="fill" class="full-width">
+                <mat-label>Select Class</mat-label>
+                <mat-select name="class" #class="ngModel" [(ngModel)]="registerFormData.classId" required>
+                    <mat-option *ngFor="let _class of classes" [value]="_class.classId">
+                        {{_class.className | titlecase}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="class.invalid && class.errors && class.errors['required']">
+                    Selection is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
             <!-- Email -->
             <mat-form-field class="full-width">
-              <mat-label>Email</mat-label>
-              <input type="email" matInput placeholder="Ex. pat@example.com" name="email" #email="ngModel"
-              [(ngModel)]="registerFormData.email" required>
-              <mat-error *ngIf="email.invalid && email.errors && email.errors['required']">
-                Email is <strong>required</strong>
-              </mat-error>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Ex. pat@example.com" name="email" #email="ngModel"
+                    [(ngModel)]="registerFormData.email" required>
+                <mat-error *ngIf="email.invalid && email.errors && email.errors['required']">
+                    Email is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
             <!-- Password -->
             <mat-form-field class="full-width">
-              <mat-label>Password</mat-label>
-              <input type="password" matInput placeholder="***" name="password" #password="ngModel"
-              [(ngModel)]="registerFormData.password" required>
-              <mat-error *ngIf="password.invalid && password.errors && password.errors['required']">
-                Password is <strong>required</strong>
-              </mat-error>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="***" name="password" #password="ngModel"
+                    [(ngModel)]="registerFormData.password" required>
+                <mat-error *ngIf="password.invalid && password.errors && password.errors['required']">
+                    Password is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
             <!-- Confirm Password -->
             <mat-form-field class="full-width">
-              <mat-label>Confirm Password</mat-label>
-              <input type="password" matInput placeholder="***" name="confirmPassword" #confirmPassword="ngModel"
-              [(ngModel)]="registerFormData.confirmPassword" required>
-              <mat-error *ngIf="confirmPassword.invalid && confirmPassword.errors && confirmPassword.errors['required']">
-                Confirm Password is <strong>required</strong>
-              </mat-error>
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" matInput placeholder="***" name="confirmPassword" #confirmPassword="ngModel"
+                    [(ngModel)]="registerFormData.confirmPassword" required>
+                <mat-error
+                    *ngIf="confirmPassword.invalid && confirmPassword.errors && confirmPassword.errors['required']">
+                    Confirm Password is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
             <p>Already have an account ? <span routerLink="/sign-in" class="link">Sign In</span></p>
             <div class="flex gap-1em">
                 <button class="flex-1" mat-raised-button color="warn" (click)="registerForm.reset()">Cancel</button>
-                <button class="flex-1" mat-raised-button color="primary" (click)="submit()">Submit</button>
+                <button class="flex-1" mat-raised-button color="primary" [disabled]="registerForm.invalid" (click)="submit()">Submit</button>
             </div>
-          </form>
+        </form>
     </mat-card>
 </div>

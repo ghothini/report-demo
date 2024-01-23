@@ -1,1 +1,30 @@
-<p>sign-in works!</p>
+<div class="flex column center-center full-height">
+    <mat-card class="half-width">
+        <h2 class="text-center">Sign In</h2>
+        <form #loginForm="ngForm" class="full-width">
+            <!-- Email -->
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Ex. pat@example.com" name="email" #email="ngModel"
+                    [(ngModel)]="loginFormData.email" required>
+                <mat-error *ngIf="email.invalid && email.errors && email.errors['required']">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <!-- Password -->
+            <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="***" name="password" #password="ngModel"
+                    [(ngModel)]="loginFormData.password" required>
+                <mat-error *ngIf="password.invalid && password.errors && password.errors['required']">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <p>Don't have an account ? <span routerLink="/sign-up" class="link">Sign Up</span></p>
+            <div class="flex gap-1em">
+                <button class="flex-1" mat-raised-button color="warn" (click)="loginForm.reset()">Cancel</button>
+                <button class="flex-1" mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="submit()">Submit</button>
+            </div>
+        </form>
+    </mat-card>
+</div>
